@@ -4,7 +4,7 @@ const { SubMenu } = Menu;
 const renderMenu = (list) => {
     console.log(list, 'list')
     list.map(item =>
-        <Menu.Item>
+        <Menu.Item key={item}>
             <span>{item} ++</span>
         </Menu.Item>
     )

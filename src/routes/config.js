@@ -20,6 +20,6 @@ export default {
         },
     ],
     others: [
-        { key: '/app/404', title: '404', icon: 'mobile', component: 'Notfound' },
+        // { key: '/app/404', title: '404', icon: 'mobile', component: 'Notfound' },
     ], // 非菜单相关路由
 };
