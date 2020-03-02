@@ -1,44 +1,34 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import DocumentTitle from 'react-document-title'
-import {Layout, Divider } from 'antd'
+import {Layout, Divider,ConfigProvider } from 'antd'
+import zhCN from 'antd/es/locale/zh_CN'
 // import Header from './components/Header'
 import { connectAlita } from 'redux-alita';
 import Routes from './routes'
-import logo from './logo.svg';
-import Home from './pages/Home'
+import SideMenu from './components/sideMenu'
 import './App.css';
+const {Sider,Footer,Header,Content}  = Layout
 console.log(Layout,'layout')
-const Content = Layout.Content;
 // const Footer = Layout.Footer;
 console.log(Content,'content')
-class App extends Component{
-  state={
-    title:'home'
-  }
-  componentDidMount() {
-
-  }
-  render(){
-    const {title} = this.state
+function App (){
+  const [title] = useState('首页');
     return(
+      <ConfigProvider locale={zhCN}>
       <DocumentTitle title={title}>
-          <Layout style={{flexDirection:'column'}}>
-          
-            {/* <Content> */}
-             {/* <Routes></Routes> */}
-            {/* </Content> */}
-              {new Date().toDateString()}
-           
-            {/* <Home></Home>   */}
-            <Routes></Routes>  
-            {/* test('should ', () => {
-              
-            }); */}
-            
-            </Layout> 
+      <Layout>
+                <Sider>
+                    <SideMenu ></SideMenu>
+                    </Sider>
+                <Layout style={{flexDirection:'column'}}>
+                    <Header>Header</Header>
+                    <Content  style={{ margin: '0 16px', overflow: 'initial', flex: '1 1 0' }}> <Routes></Routes>  </Content>
+                    <Footer>Footer</Footer>
+                </Layout>
+            </Layout>
       </DocumentTitle>
+      </ConfigProvider>
     )
-  }
 }
 
 

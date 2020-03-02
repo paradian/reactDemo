@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
 import pages from '../pages';
 import routesConfig from './config';
@@ -27,7 +27,6 @@ import queryString from 'query-string';
     // };
     render() {
         return (
-            <BrowserRouter>
             <Switch>
                 {Object.keys(routesConfig).map(key =>
                     routesConfig[key].map(r => {
@@ -79,10 +78,9 @@ import queryString from 'query-string';
                         return r.component ? route(r) : r.subs.map(r => route(r));
                     })
                 )}
-
+                {/* 所有未匹配到的路由路径，转向404 */}
                 <Route render={() => <Redirect to="/404" />} />
             </Switch>
-            </BrowserRouter>   
         );
     }
 }

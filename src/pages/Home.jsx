@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import {DatePicker} from 'antd'
+import {DatePicker,Layout,} from 'antd'
+
 import SideMenu from '../components/sideMenu'
+
+const {Sider,Footer,Header,Content}  = Layout
 class Home extends Component {
     state = {
         date:new Date(),
@@ -9,6 +12,7 @@ class Home extends Component {
     componentWillMount() {
         console.log('component will mount')
     }
+   
     changeDate(date,dateString) {
         console.log(date,dateString)
     }
@@ -19,12 +23,10 @@ class Home extends Component {
     }
     render() {
         return (
-            <div>
-            <div>Home Page</div>
-            <SideMenu></SideMenu>
-            <DatePicker onChange={this.changeDate} />
-        {/* <div>{this.createDoms}</div> */}
-            </div>
+          <div className="container" >
+              hoem page
+          </div>
+           
         )
     }
 }

@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button } from 'antd'
+import { Menu, Icon, Button } from 'antd';
+import routes from '../routes/config'
+import {Link} from 'react-router-dom'
 const { SubMenu } = Menu;
-const renderMenu = (list) => {
-    console.log(list, 'list')
-    list.map(item =>
-        <Menu.Item key={item}>
-            <span>{item} ++</span>
-        </Menu.Item>
-    )
-}
+const MenuList = routes.menus;
+const renderMenu = (item) => (
+    console.log(item,'item'),
+    <Menu.Item key={item.key}>
+        <Link to={item.key}>
+            {item.icon && <Icon type={item.icon}></Icon>}
+                <span>{item.title}</span>
+        </Link>
+    </Menu.Item>);
+
+const renderSubMenu = (item) => (
+    <SubMenu key={item.key} title ={<span>
+        {item.icon && <Icon type={item.icon}></Icon>}
+        <span>{item.title}</span>
+    </span>}>
+        
+   
+    {item.subs.map(cell => renderMenu(cell))}
+    </SubMenu>)
+
 class SideMenu extends Component {
     constructor(props) {
        super(props)
     }
     componentDidMount() {
         console.log('component did mount')
+        console.log(MenuList,'MenuList')
     }
     componentDidUpdate() {
         console.log('component did update')
@@ -35,15 +50,14 @@ class SideMenu extends Component {
     render() {
         return (
             <div className="menu-container" style={{ width: 256}}>
-                <Button onClick={this.changeStatus}>
+                {/* <Button onClick={this.changeStatus}>
 
-                </Button>
+                </Button> */}
                 <Menu inlineCollapsed={this.state.collapsed} theme={'dark'} mode={'inline'}>
                     {
-                        this.state.list.map(item =>
-                            <Menu.Item>
-                                <span>{item} ++</span>
-                            </Menu.Item>
+                        MenuList.map(item =>(
+                            console.log(item,'itemmmmmmm'),
+                           item.subs? renderSubMenu(item) : renderMenu(item))
                         )
                     }
                 </Menu>

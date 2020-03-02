@@ -3,12 +3,12 @@ export default {
         // 菜单相关路由
         { key: '/app/home', title: '首页', icon: 'mobile', component: 'Home' },
         {
-            key: '/app/multi',
-            title: 'UI',
+            key: '/app/demo',
+            title: '测试',
             icon: 'scan',
             subs: [
-                { key: '/app/multi/demo1', title: '按钮', component: 'Info' },
-                { key: '/app/multi/demo1', title: '按钮', component: 'Setting' },
+                { key: '/app/demo/demo1', title: '按钮', component: 'Info' },
+                { key: '/app/demo/demo2', title: '按钮', component: 'Setting' },
                
             ],
         },
@@ -16,7 +16,7 @@ export default {
             key: '/app/setting',
             title: '表单',
             icon: 'edit',
-            subs: [{ key: '/app/form/basicForm', title: '基础表单', component: 'Setting' }],
+            subs: [{ key: '/app/setting/settingForm', title: '基础表单', component: 'Setting' }],
         },
     ],
     others: [
