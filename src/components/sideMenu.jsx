@@ -18,14 +18,14 @@ const renderSubMenu = (item) => (
         {item.icon && <Icon type={item.icon}></Icon>}
         <span>{item.title}</span>
     </span>}>
-        
-   
     {item.subs.map(cell => renderMenu(cell))}
     </SubMenu>)
 
 class SideMenu extends Component {
+
     constructor(props) {
        super(props)
+       console.log(props,'props')
     }
     componentDidMount() {
         console.log('component did mount')
@@ -49,11 +49,11 @@ class SideMenu extends Component {
 
     render() {
         return (
-            <div className="menu-container" style={{ width: 256}}>
+            <div className="menu-container" style={{ width: 200}}>
                 {/* <Button onClick={this.changeStatus}>
 
                 </Button> */}
-                <Menu inlineCollapsed={this.state.collapsed} theme={'dark'} mode={'inline'}>
+                <Menu inlineCollapsed={this.props.collapsed} theme={'dark'} mode={!this.props.collapsed?'inline':'vertical'}>
                     {
                         MenuList.map(item =>(
                             console.log(item,'itemmmmmmm'),
