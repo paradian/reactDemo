@@ -49,7 +49,7 @@ class SideMenu extends Component {
 
     render() {
         return (
-            <div className="menu-container" style={{ width: 200}}>
+            <div className="menu-container" style={ !this.props.collapsed?{ width: 200}:{width:76}}>
                 {/* <Button onClick={this.changeStatus}>
 
                 </Button> */}

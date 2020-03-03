@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
-import { Layout, Divider, ConfigProvider } from 'antd'
+import { Layout, Divider, ConfigProvider,Button } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
 // import Header from './components/Header'
 import { connectAlita } from 'redux-alita'
@@ -30,12 +30,17 @@ class App extends Component {
   }
   render() {
     const { title } = this.state
+    const SiderStyle = {
+      height : '100%',
+      overflowY : 'auto'
+    }
     return (
       <ConfigProvider locale={zhCN}>
         <DocumentTitle title={title}>
           <Layout>
-            <Sider>
-              <SideMenu collapsed={this.state.collapsed}></SideMenu>
+            <Sider style={SiderStyle}  collapsed={this.state.collapsed}>
+              <Button>logo</Button>
+              <SideMenu collapsed={this.state.collapsed} style={ !this.state.collapsed?{ width: 200}:{width:76}}></SideMenu>
             </Sider>
             <Layout style={{ flexDirection: 'column' }}>
               <Header>

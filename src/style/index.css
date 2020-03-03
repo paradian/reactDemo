@@ -1,3 +1,13 @@
-.container {
+#root {
     height: 100%;
+}
+.ant-layout {
+    height: 100%;
+}
+aside.ant-layout-sider-children {
+    height: 100;
+}
+header.ant-layout-header {
+    padding:0;
+    padding-right: 20px;
 }
