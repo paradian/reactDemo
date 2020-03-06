@@ -50,7 +50,6 @@ class App extends Component {
                 ></NavBar>
               </Header>
               <Content
-                style={{ margin: '0 16px', overflow: 'initial', flex: '1 1 0' }}
               >
                 {' '}
                 <Routes></Routes>{' '}

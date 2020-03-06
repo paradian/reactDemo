@@ -8,7 +8,7 @@ export default {
             icon: 'scan',
             subs: [
                 { key: '/app/demo/demo1', title: '按钮', component: 'Info' },
-                { key: '/app/demo/demo2', title: '按钮', component: 'Setting' },
+                // { key: '/app/demo/demo2', title: '按钮niu', component: 'Setting' },
                
             ],
         },
