@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
 import {
-    Form,
     Input,
     Tooltip,
     Cascader,
@@ -12,10 +13,8 @@ import {
     AutoComplete,
     DatePicker,
     InputNumber,
-    TimePicker
-
-   
-  } from 'antd';
+    TimePicker,
+} from 'antd';
 
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import QQMap from '../components/QQmap'
@@ -23,7 +22,7 @@ const {Option } = Select;
 const {TextArea} = Input
 const renderOptions = (item)=> (
         <Option value={item.value}>{item.key}</Option>)
-   
+
 
 class Info extends Component {
     state={

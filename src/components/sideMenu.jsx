@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Menu, Icon, Button } from 'antd';
+import { Icon as LegacyIcon } from '@ant-design/compatible';
+import { Menu, Button } from 'antd';
 import routes from '../routes/config'
 import {Link} from 'react-router-dom'
 const { SubMenu } = Menu;
@@ -8,14 +9,14 @@ const renderMenu = (item) => (
     console.log(item,'item'),
     <Menu.Item key={item.key}>
         <Link to={item.key}>
-            {item.icon && <Icon type={item.icon}></Icon>}
+            {item.icon && <LegacyIcon type={item.icon}></LegacyIcon>}
                 <span>{item.title}</span>
         </Link>
     </Menu.Item>);
 
 const renderSubMenu = (item) => (
     <SubMenu key={item.key} title ={<span>
-        {item.icon && <Icon type={item.icon}></Icon>}
+        {item.icon && <LegacyIcon type={item.icon}></LegacyIcon>}
         <span>{item.title}</span>
     </span>}>
     {item.subs.map(cell => renderMenu(cell))}
