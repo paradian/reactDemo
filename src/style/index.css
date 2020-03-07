@@ -27,3 +27,7 @@ main.ant-layout-content {
 .map-container {
     display: none;
 }
+
+main.ant-layout-content::-webkit-scrollbar { width: 0 !important }
+/* main.ant-layout-content { overflow: -moz-scrollbars-none; }
+main.ant-layout-content { -ms-overflow-style: none; } */

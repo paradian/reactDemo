@@ -10,7 +10,7 @@ class Home extends Component {
         list:[1,2,3,4,5]
     }
     componentWillMount() {
-        console.log('component will mount')
+        console.log('component will mount',API)
         API.getList().then(res => {
             console.log(res,'resssss')
         })

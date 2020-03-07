@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'antd'
+import { Button,Icon} from 'antd'
 import {MenuUnfoldOutlined,MenuFoldOutlined} from '@ant-design/icons';
 
 class Header extends Component {
@@ -15,7 +15,8 @@ class Header extends Component {
       <div style={headerStyle}>
         <Button onClick={this.props.changeStatus}>
          {/* {React.createElement(!this.props.collapsed?MenuUnfoldOutlined : MenuFoldOutlined)} */}
-         click
+         {console.log(this.props.collapsed)}
+         <Icon type={!this.props.collapsed?'menu-fold':'menu-unfold'} style={{fontSize:18}}></Icon>
         </Button>
         <div style={{display:'inline-block'}}>
           <Button>full</Button>

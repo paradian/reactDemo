@@ -39,7 +39,9 @@ class App extends Component {
         <DocumentTitle title={title}>
           <Layout>
             <Sider style={SiderStyle}  collapsed={this.state.collapsed}>
-              <Button>logo</Button>
+              <div style={{display:'flex',justifyContent:'center',alignItems:'center',}}>
+               <div style={{height:64,lineHeight:'64px',textAlign:'center',width:'40%',color:'#fff',backgroundColor:'#aaa',borderRadius:'5px'}}>logo</div> 
+                </div>
               <SideMenu collapsed={this.state.collapsed} style={ !this.state.collapsed?{ width: 200}:{width:76}}></SideMenu>
             </Sider>
             <Layout style={{ flexDirection: 'column' }}>

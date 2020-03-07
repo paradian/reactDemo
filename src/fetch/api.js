@@ -1,10 +1,6 @@
-import fetch from './fetch'
+import release from './modules/release'
 
-const getList = ()=>{
-    return fetch('topics','GET','')
-}
-
-
+console.log(release,'release')
 export default {
-    getList,
+    ...release
 }
