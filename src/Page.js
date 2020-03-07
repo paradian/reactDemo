@@ -1,4 +1,5 @@
 import React from 'react';
+import {Provider} from 'react-redux'
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Login from './pages/login';

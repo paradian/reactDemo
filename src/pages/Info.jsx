@@ -16,7 +16,7 @@ import {
 
    
   } from 'antd';
-
+import moment from 'moment'
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import QQMap from '../components/QQmap'
 const {Option } = Select;
@@ -94,9 +94,9 @@ class Info extends Component {
                     </Form.Item>
 
                     <Form.Item name='time' label='时段' >
-                    {/* <TimePicker.RangePicker>
-
-                    </TimePicker.RangePicker> */}
+                    <TimePicker  format={'HH:mm'} defaultValue={moment('08:00','HH:mm')}>
+                    </TimePicker>-- <TimePicker  format={'HH:mm'} defaultValue={moment('18:00','HH:mm')}>
+                    </TimePicker>
                     </Form.Item>
                     <Form.Item name='type' label='福利' >
                     <Checkbox.Group options={benifits}  onChange={this.onBenifitsChange} />
@@ -116,6 +116,31 @@ class Info extends Component {
                             renderOptions(item)
                         ))}
                     </Select>
+                    </Form.Item>
+                    <Form.Item name='sex' label='联系人' >
+                    <Input ></Input>
+                    </Form.Item>
+                    <Form.Item name='sex' label='联系电话' >
+                    <Input ></Input>
+                    </Form.Item>
+                    <Form.Item name='sex' label='联系邮箱' >
+                    <Input ></Input>
+                    </Form.Item>
+                    <Form.Item name='sex' label='发布' >
+                    <Input ></Input>
+                    </Form.Item>
+                    <Form.Item name='sex' >
+                    <Checkbox>
+              发布即同意 <a href="">《学工帮发布兼职协议》</a>
+            </Checkbox>
+                    </Form.Item>
+                    <Form.Item name='sex' >
+                    <Checkbox>
+              是否开启快招 <a href="">直接提高招聘效率</a>
+            </Checkbox>
+                    </Form.Item>
+                    <Form.Item name='sex' >
+                    <Button>发布</Button>
                     </Form.Item>
                 </Form>
             </div>
