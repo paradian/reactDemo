@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {DatePicker,Layout,} from 'antd'
 
 import SideMenu from '../components/sideMenu'
-import {getList} from '../fetch/api'
+import API from '../fetch/api'
 const {Sider,Footer,Header,Content}  = Layout
 class Home extends Component {
     state = {
@@ -11,7 +11,7 @@ class Home extends Component {
     }
     componentWillMount() {
         console.log('component will mount')
-        getList().then(res => {
+        API.getList().then(res => {
             console.log(res,'resssss')
         })
     }

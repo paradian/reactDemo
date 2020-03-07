@@ -52,6 +52,9 @@ class QQmap extends Component{
     getAdress =() =>{
 
     }
+    commitLocations =(data) =>{
+        this.props.getLocations(data)
+    }
     initQMap=(self)=> {
         const that = this;
         let lng = '118.796470'
@@ -82,7 +85,7 @@ class QQmap extends Component{
                      // 调用搜索服务
                      searchService = new QMap.SearchService({
                          complete: results=> {
-                             let pois = results.detail.pois;
+                             let pois = results.detail.pois || [];
                              for (let i =0 , l = pois.length; i < l; i++) {
                                  let poi = pois[i];
                                  latlngBounds.extend(poi.latLng);
@@ -97,6 +100,7 @@ class QQmap extends Component{
                              this.setState({
                                  searchResult:pois
                              })
+                             this.commitLocations(pois)
                              this.map.fitBounds(latlngBounds);
                          },
                      });

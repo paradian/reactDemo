@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const baseUrl = 'https://cnodejs.org/api/v1/';
+// const baseUrl = ''
 const instance = axios.create({
 
 })
@@ -47,4 +48,24 @@ const  fetch =  (url ,method =method ||'GET',data=data||'') => {
     //     console.log(err,'error')
     // }
     }
+
+    Promise.prototype.finally = function(callback) {
+        var Promise = this.constructor;
+        return this.then(
+          function(value) {
+            Promise.resolve(callback()).then(
+              function() {
+                return value;
+              }
+            );
+          },
+          function(reason) {
+            Promise.resolve(callback()).then(
+              function() {
+                throw reason;
+              }
+            );
+          }
+        );
+      }
 export default fetch;

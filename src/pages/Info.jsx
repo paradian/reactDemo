@@ -19,6 +19,7 @@ import {
 
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import QQMap from '../components/QQmap'
+import FormExtra from '../components/Form'
 const {Option } = Select;
 const {TextArea} = Input
 const renderOptions = (item)=> (
@@ -27,7 +28,12 @@ const renderOptions = (item)=> (
 
 class Info extends Component {
     state={
-        location:{}
+        location:{},
+        jobInfo:{
+            workType:'',
+            count:'',
+
+        }
     }
     getLocation = (value)=> {
         console.log(value)
@@ -42,6 +48,9 @@ class Info extends Component {
         console.log(DatePicker.RangePicker,'sakdjfl;sadk',TimePicker.RangePicker,)
     }
     render() {
+        console.log(this,this.props,this.props.form,'form')
+        const { getFieldDecorator } = this.props.form;
+        console.log(getFieldDecorator,'field')
         const data = [{key:'服务员',value:'1'},{key:'发传单',value:'3'},{key:'模特',value:'2'},{key:'家教',value:'4'}]
         const sexs = [{key:'男',value:'1'},{key:'女',value:'3'},{key:'不限',value:'0'}]
         const period = [{key:'天',value:'1'},{key:'周',value:'3'},{key:'月',value:'2'},{key:'时',value:'4'}]
@@ -58,68 +67,12 @@ class Info extends Component {
         };
 
         return(
+            
             <div>
-                <Form size={'middle'} {...formItemLayout}>
-                <Form.Item name='detail' label='兼职标题' >
-                    <Input ></Input>
-                    </Form.Item>
-                    <Form.Item name='detail' label='职位描述' >
-                    <Input.TextArea ></Input.TextArea>
-                    </Form.Item>
-                    <Form.Item name='type' label='类型' >
-                    <Select placeholder='请选择类型' style={{width:200}}>
-                        {data.map(item =>(
-                            renderOptions(item)
-                        ))}
-                    </Select>
-                    </Form.Item>
-                    <Form.Item name='type' label='结算周期' >
-                    <Select placeholder='请选择类型' style={{width:200}}>
-                        {period.map(item =>(
-                            renderOptions(item)
-                        ))}
-                    </Select>
-                    </Form.Item>
-                    <Form.Item name='type' label='工资单位' >
-                    <Select placeholder='请选择类型' style={{width:200}}>
-                        {period.map(item =>(
-                            renderOptions(item)
-                        ))}
-                    </Select>
-                    </Form.Item>
-                    <Form.Item name='type' label='日期' >
-                    <DatePicker.RangePicker>
-
-                    </DatePicker.RangePicker>
-                    </Form.Item>
-
-                    <Form.Item name='time' label='时段' >
-                    {/* <TimePicker.RangePicker>
-
-                    </TimePicker.RangePicker> */}
-                    </Form.Item>
-                    <Form.Item name='type' label='福利' >
-                    <Checkbox.Group options={benifits}  onChange={this.onBenifitsChange} />
-                    </Form.Item>
-                    <Form.Item name='type' label='地址' >
-                  <QQMap getLocation={this.getLocation}></QQMap>
-                    </Form.Item>
-                    <Form.Item name='detail' label='描述' >
-                    <Input.TextArea ></Input.TextArea>
-                    </Form.Item>
-                    <Form.Item name='count' label='人数' >
-                  <InputNumber style={{width:200}} placeholder={'请输入详细位置或位置描述'}></InputNumber>
-                    </Form.Item>
-                    <Form.Item name='sex' label='性别' >
-                    <Select placeholder='请选择性别' style={{width:200}}>
-                        {sexs.map(item =>(
-                            renderOptions(item)
-                        ))}
-                    </Select>
-                    </Form.Item>
-                </Form>
+               <FormExtra></FormExtra>
             </div>
         )
     }
 }
-export default Info;
+ const InfoExtra = Form.create({name:'Info'})(Info)
+export default InfoExtra;

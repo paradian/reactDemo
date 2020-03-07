@@ -5,6 +5,6 @@ const getList = ()=>{
 }
 
 
-export {
+export default {
     getList,
 }

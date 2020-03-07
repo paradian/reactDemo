@@ -53,7 +53,7 @@ class SideMenu extends Component {
                 {/* <Button onClick={this.changeStatus}>
 
                 </Button> */}
-                <Menu inlineCollapsed={this.props.collapsed} theme={'dark'} mode={!this.props.collapsed?'inline':'vertical'}>
+                <Menu collapsed={this.props.collapsed.toString()} theme={'dark'} mode={!this.props.collapsed?'inline':'vertical'}>
                     {
                         MenuList.map(item =>(
                             console.log(item,'itemmmmmmm'),

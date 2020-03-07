@@ -8,8 +8,8 @@ class Header extends Component {
   render() {
     const headerStyle = {
       'display':'flex', 
-      'justify-content':'space-between',
-      'align-items':'center',
+      'justifyContent':'space-between',
+      'alignItems':'center',
     }
     return (
       <div style={headerStyle}>
