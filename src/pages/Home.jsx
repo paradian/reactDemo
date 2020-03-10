@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {DatePicker,Layout,} from 'antd'
-
+import BasicTable from '../components/Table'
 import SideMenu from '../components/sideMenu'
 import API from '../fetch/api'
 const {Sider,Footer,Header,Content}  = Layout
@@ -24,10 +24,16 @@ class Home extends Component {
         //     <div>item -- {item}</div>
         // })
     }
+    timesUp() {
+        let timer = setInterval(() =>{
+
+        })
+    }
     render() {
         return (
           <div className="container" >
               hoem page
+              <BasicTable></BasicTable>
           </div>
            
         )

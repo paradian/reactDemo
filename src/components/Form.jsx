@@ -2,14 +2,9 @@ import React, { Component } from 'react'
 import {
     Form,
     Input,
-    Tooltip,
-    Cascader,
     Select,
-    Row,
-    Col,
     Checkbox,
     Button,
-    AutoComplete,
     DatePicker,
     InputNumber,
     TimePicker,
@@ -19,12 +14,15 @@ import moment from 'moment'
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import QQMap from './QQmap'
 const { Option } = Select;
-const { TextArea } = Input
+// const { TextArea } = Input
 const renderOptions = (item) => (
     <Option value={item.value} key={item.value}>{item.key}</Option>)
 
     const renderPois = (item) => (
         <Option value={item.name} key={item.id}>{item.name}</Option>)
+        // window.onunload =() =>{
+        //     alert('刷新')
+        // }
 class rawForm extends Component {
     constructor(props) {
         super(props)
@@ -52,6 +50,13 @@ class rawForm extends Component {
     }
     componentDidMount() {
         console.log(DatePicker.RangePicker, 'sakdjfl;sadk', TimePicker.RangePicker)
+        // this.props.form.setFieldsValue({
+        //     detail:'包吃住',
+        //     addressInfo:'十八楼'
+        // })
+    }
+    componentWillUnmount() {
+        console.log('unMoount')
     }
     submitForm = (event) =>{
         console.log('enter?')
@@ -64,6 +69,7 @@ class rawForm extends Component {
             console.log(value,'valuessssss')
         })
     } 
+   
     render() {
         console.log(this, this.props, this.props.form, 'form')
         const { getFieldDecorator } = this.props.form;
@@ -219,8 +225,8 @@ class rawForm extends Component {
                           </Select>)}
                         <QQMap getLocations={this.getLocations} ref={'QMap'}></QQMap>
                     </Form.Item>
-                    <Form.Item name='detail' label='描述' >
-                    {getFieldDecorator('detail', {
+                    <Form.Item name='addressInfo' label='描述' >
+                    {getFieldDecorator('addressInfo', {
                             rules: [
                                 {
                                     required: true,
@@ -231,7 +237,7 @@ class rawForm extends Component {
                        
                     </Form.Item>
                     <Form.Item name='count' label='人数' >
-                    {getFieldDecorator('detail', {
+                    {getFieldDecorator('count', {
                             rules: [
                                 {
                                     required: true,
