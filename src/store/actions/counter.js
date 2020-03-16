@@ -1,11 +1,10 @@
- const increment = () =>({
-    type:'INCREMENT',
-    
+const increment = () => ({
+  type: 'INCREMENT'
 })
- const decrement = () => ({
-    type:'DECREMENT'
+const decrement = () => ({
+  type: 'DECREMENT'
 })
 export default {
-    increment,
-    decrement
+  increment,
+  decrement
 }

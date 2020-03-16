@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const baseUrl = 'https://cnodejs.org/api/v1/';
 // const baseUrl = ''
-const instance = axios.create({
+// const instance = axios.create({
 
-})
+// })
 const  fetch =  (url ,method =method ||'GET',data=data||'') => {
     method = method.toUpperCase()
     if(method == 'GET') {
