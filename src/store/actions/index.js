@@ -6,7 +6,7 @@ export const addTodo = text => ({
 })
 export const increment = () =>({
     type:'INCREMENT',
-
+    
 })
 export const decrement = () => ({
     type:'DECREMENT'

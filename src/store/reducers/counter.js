@@ -1,4 +1,5 @@
 const counter =(state = 0, action) => {
+  console.log('enter,',state,'state',action,'action')
     switch (action.type) {
       case 'INCREMENT':
         return state + 1
@@ -8,5 +9,5 @@ const counter =(state = 0, action) => {
         return state
     }
   }
-  export default counter;
+export default {counter};
   
