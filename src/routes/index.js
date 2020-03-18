@@ -4,7 +4,8 @@ import DocumentTitle from 'react-document-title';
 import pages from '../pages';
 import routesConfig from './config';
 import queryString from 'query-string';
-
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
  class CRouter extends Component {
     // requireAuth = (permission, component) => {
     //     // const { auth } = this.props ||'';
@@ -25,17 +26,29 @@ import queryString from 'query-string';
     //     // console.log(permission,'permission')
     //     return component;
     // };
+    componentWillMount() {
+        // routesConfig.menus = routesConfig.menus.filter(cell => cell.permission.includes('admin'));
+        // let temp = routesConfig.menus
+        // temp.forEach((cell,index) =>{
+        //     if(cell.permission.findIndex(c => c == 'guest')<0){
+        //         routesConfig.menus.splice(index,1)
+        //     }
+        // })
+        // console.log(routesConfig.menus,'routesConfig.menus')
+    }
+   
+   
+   
     render() {
+        console.log(routesConfig,'routesConfig')
+        console.log(this.props,'userLevel')
         return (
             <Switch>
                 {Object.keys(routesConfig).map(key =>
                     routesConfig[key].map(r => {
-                        console.log(r,'route')
                         const route = r => {
-                            console.log('enter')
-                            console.log(r.component,'r_r')
                             const Component = pages[r.component];
-                            console.log(Component,pages[r.component],'component')
+                            // console.log(Component,pages[r.component],'component')
                             return (
                                 <Route
                                     key={r.route || r.key}
@@ -51,7 +64,6 @@ import queryString from 'query-string';
                                             params[key] =
                                                 params[key] && params[key].replace(reg, '');
                                         });
-                                        console.log('Ha?')
                                         props.match.params = { ...params };
                                         const merge = {
                                             ...props,
@@ -65,12 +77,11 @@ import queryString from 'query-string';
                                                 <Component  {...merge} />
                                             </DocumentTitle>
                                         );
-                                        console.log('dududud')
-                                        console.log(wrappedComponent,'warppedcomponent')
-                                        return wrappedComponent
-                                        //  r.login
-                                        //     ? wrappedComponent
-                                        //     : this.requireLogin(wrappedComponent, r.auth);
+                                        // return wrappedComponent
+                                        console.log(this.props.userLevel<r.permission,'userLevel',this.props.userLevel,r.permission)
+                                        return (r.permission < this.props.userLevel.userLevel)
+                                            ? wrappedComponent
+                                            : <Route render={() => <Redirect to="/login" />} />;
                                     }}
                                 />
                             );
@@ -84,4 +95,7 @@ import queryString from 'query-string';
         );
     }
 }
-export default CRouter;
+function mapGetLevel (state) {
+    return {userLevel:state}
+}
+export default connect(mapGetLevel)(CRouter);

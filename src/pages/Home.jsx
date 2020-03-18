@@ -11,7 +11,9 @@ const { Sider, Footer, Header, Content } = Layout
 class Home extends Component {
   state = {
     date: new Date(),
-    list: [1, 2, 3, 4, 5]
+    list: [1, 2, 3, 4, 5],
+    array:[2,5,4,6,9],
+
   }
   componentWillMount() {
     console.log('component will mount', API)
@@ -19,6 +21,20 @@ class Home extends Component {
       console.log(res, 'resssss')
     })
     console.log(this.store, this, 'store,,,')
+    let length = this.state.array.length-1;
+    let temp= this.state.list
+    while(length>-1){
+     let index = this.state.list.findIndex(cell => cell == this.state.array[length])
+     if(index<0){
+       temp.push(this.state.array[length])
+     }
+     console.log(temp,'temppppp')
+     length --;
+
+
+    }
+    console.log(temp,'temp')
+    
   }
   componentDidMount() {
     const { dispatch } = this.props
@@ -38,6 +54,7 @@ class Home extends Component {
   }
   render() {
     console.log(this.props.count, 'props,props')
+    console.log(this.props.list)
     const { dispatch } = this.props
     console.log(dispatch, 'dispatch')
     return (
@@ -56,7 +73,8 @@ class Home extends Component {
 }
 function mapGetCounter(state) {
   return {
-    count: state
+    count: state,
+    list:state
   }
 }
 function mapChangeCounter(dispatch) {

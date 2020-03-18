@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
-import counter from './counter'
-import list from './list'
+import counter from './modules/counter'
+import list from './modules/list'
+import userLevel from './modules/userLevel'
 console.log(counter,'counter')
 export default combineReducers({
     ...counter,
-    ...list
+    ...list,
+    ...userLevel
 })
