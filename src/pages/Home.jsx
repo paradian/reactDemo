@@ -52,6 +52,9 @@ class Home extends Component {
   timesUp() {
     let timer = setInterval(() => {})
   }
+  checkItem(data,item) {
+    console.log(data,'console.log data',item)
+  }
   render() {
     console.log(this.props.count, 'props,props')
     console.log(this.props.list)
@@ -66,7 +69,7 @@ class Home extends Component {
           <Button onClick={() => this.props.decreseCounter()}>-</Button>
         </div>
         <Button onClick={() => this.props.getlist()}>getlist</Button>
-        <BasicTable></BasicTable>
+        <BasicTable checkItem={this.checkItem}></BasicTable>
       </div>
     )
   }

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Menu, Icon, Button } from 'antd';
 import routes from '../routes/config'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 const { SubMenu } = Menu;
-const MenuList = routes.menus;
+var MenuList = routes.menus;
 const renderMenu = (item) => (
-    console.log(item,'item'),
     <Menu.Item key={item.key}>
         <Link to={item.key}>
             {item.icon && <Icon type={item.icon}></Icon>}
@@ -27,15 +27,18 @@ class SideMenu extends Component {
        super(props)
        console.log(props,'props')
     }
+    componentWillMount() {
+      MenuList=  MenuList.filter(item => item.permission<= this.props.level)
+        console.log('enter will mount')
+    }
     componentDidMount() {
-        console.log('component did mount')
-        console.log(MenuList,'MenuList')
+     console.log(this.props,'props')
     }
     componentDidUpdate() {
-        console.log('component did update')
+       
     }
     componentWillUnmount() {
-        console.log('component will unmount')
+      
     }
     state = {
         collapsed: false,
@@ -56,7 +59,6 @@ class SideMenu extends Component {
                 <Menu collapsed={this.props.collapsed.toString()} theme={'dark'} mode={!this.props.collapsed?'inline':'vertical'}>
                     {
                         MenuList.map(item =>(
-                            console.log(item,'itemmmmmmm'),
                            item.subs? renderSubMenu(item) : renderMenu(item))
                         )
                     }
@@ -66,4 +68,9 @@ class SideMenu extends Component {
         )
     }
 }
-export default SideMenu; 
+function mapProps(state) {
+return {
+    level:state.login
+}
+}
+export default connect(mapProps)(SideMenu); 

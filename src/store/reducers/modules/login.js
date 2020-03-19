@@ -1,14 +1,23 @@
 // import login from ''
-import pages from '../../pages'
+// import pages from '../../pages'
+// import routes from '../../routes/config'
+import actions from '../../actions/index'
 const login = (state='',action) => {
     switch(action.type){
         case 'set-token':
-            sessionStorage.setItem('token',state)
-        this.filterRoute()
-            return state;
+            console.log(state,action,'state')
+            sessionStorage.setItem('token',action.data)
+            console.log(state,'this')
+            // this.props.history.push({
+            //     pathname:'/home'
+            // })
+        // this.filterRoute()
+            return action.data;
+            default :
+            return 2;
     }
 }
 
-const filterRoute = (state =[]) =>{
-    return pages.filter(cell => cell.premission == 'admin')
+export default {
+    login
 }

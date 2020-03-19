@@ -78,10 +78,10 @@ import {bindActionCreators} from 'redux'
                                             </DocumentTitle>
                                         );
                                         // return wrappedComponent
-                                        console.log(this.props.userLevel<r.permission,'userLevel',this.props.userLevel,r.permission)
-                                        return (r.permission < this.props.userLevel.userLevel)
+                                        console.log(this.props.userLevel.login<r.permission,'userLevel',this.props.userLevel,r.permission)
+                                        return (r.permission <= this.props.userLevel.login)
                                             ? wrappedComponent
-                                            : <Route render={() => <Redirect to="/login" />} />;
+                                            : <Route render={() => <Redirect to="/404" />} />;
                                     }}
                                 />
                             );

@@ -1,4 +1,5 @@
-const setToken =() =>({
-    type:'set-token'
+const setToken =(data) =>({
+    type:'set-token',
+    data
 })
 export default {setToken}
