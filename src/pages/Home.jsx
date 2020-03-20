@@ -55,11 +55,58 @@ class Home extends Component {
   checkItem(data,item) {
     console.log(data,'console.log data',item)
   }
+  drawDemo() {
+    let dom = this.refs.canvasDemo
+    console.log(dom,'dom',Math.PI)
+    if(dom.getContext){
+      var ctx = dom.getContext('2d')
+      ctx.fillStyle = 'rgb(200, 0, 0)';
+      ctx.fillRect(10, 10, 100, 100);
+
+      ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+      ctx.fillRect(50, 50, 100, 100);
+      ctx.fillStyle = 'rgba(0, 0, 100, 0.5)';
+      ctx.fillRect(80, 80, 100, 100);
+      ctx.strokeRect(90,90,70,70)
+      ctx.clearRect(80, 80, 60, 60);
+
+      ctx.beginPath()
+      ctx.moveTo(250,40)
+      ctx.lineTo(240,30)
+      ctx.lineTo(240,50)
+      ctx.fill()
+
+      ctx.beginPath()
+      ctx.arc(250,250,30,0,Math.PI*2,true)
+      //uppp
+      // ctx.moveTo(270,250)
+      // ctx.arc(250,250,20,0,Math.PI,false)
+      //down
+      ctx.moveTo(270,270)
+      ctx.arc(250,270,20,0,Math.PI,true)
+      ctx.moveTo(240,235)
+      ctx.arc(235,235,5,0,Math.PI*2,true)
+      ctx.moveTo(270,235)
+      ctx.arc(265,235,5,0,Math.PI*2,true)
+      ctx.stroke()
+
+    }
+  }
+  componentDidMount(){
+    this.drawDemo()
+  }
+ canvasStyle={
+    demo:{
+      width:300,
+      height:300
+    }
+  }
   render() {
     console.log(this.props.count, 'props,props')
     console.log(this.props.list)
     const { dispatch } = this.props
     console.log(dispatch, 'dispatch')
+  
     return (
       <div className="container">
         hoem page
@@ -69,6 +116,8 @@ class Home extends Component {
           <Button onClick={() => this.props.decreseCounter()}>-</Button>
         </div>
         <Button onClick={() => this.props.getlist()}>getlist</Button>
+        <canvas width='300' height='300' ref='canvasDemo'>
+        </canvas>
         <BasicTable checkItem={this.checkItem}></BasicTable>
       </div>
     )
