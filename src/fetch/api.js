@@ -1,6 +1,8 @@
 import release from './modules/release'
+import helloTest from './modules/demo'
 
-console.log(release,'release')
+console.log(release,helloTest,'release')
 export default {
-    ...release
+    ...release,
+    ...helloTest
 }

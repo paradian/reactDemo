@@ -5,6 +5,10 @@ class BasicTable extends Component{
         columns :[],
         data :[]
     }
+    commitData(data,) {
+        console.log( data)
+        this.props.checkItem(data)
+    }
     componentWillMount() {
         this.setState({
             columns :[
@@ -15,7 +19,7 @@ class BasicTable extends Component{
                 {title:'时间',dataIndex:'time',key:'time'},
                 {title:'操作',dataIndex:'action',key:'action',render:(text,record) =>(
                     <span>
-                        <Button onClick={(text,record) => this.props.checkItem(text,record)}>查看</Button>
+                        <Button onClick={() => this.props.checkItem(record)}>查看</Button>
                         
                     </span>
                 )},

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = 'https://cnodejs.org/api/v1/';
-// const baseUrl = ''
+// const baseUrl = 'https://cnodejs.org/api/v1/';
+const baseUrl = 'http://192.168.237.1:8888'
 // const instance = axios.create({
 
 // })

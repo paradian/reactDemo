@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './style/index.css';
 import Page from './Page';
+import rem from './global/rem'
 import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux'

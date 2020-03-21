@@ -52,8 +52,13 @@ class Home extends Component {
   timesUp() {
     let timer = setInterval(() => {})
   }
-  checkItem(data,item) {
-    console.log(data,'console.log data',item)
+  checkItem =(data,item) =>{
+    console.log(data,'console.log data',this)
+
+    this.props.history.push({
+      pathname:'/app/list/'+data.key+'?key=qwq&name=leo',
+      query:{id:data.key,name:'leo',age:'23'}
+    })
   }
   drawDemo() {
     let dom = this.refs.canvasDemo
@@ -95,7 +100,7 @@ class Home extends Component {
   componentDidMount(){
     this.drawDemo()
   }
- canvasStyle={
+ canvasStyle = {
     demo:{
       width:300,
       height:300

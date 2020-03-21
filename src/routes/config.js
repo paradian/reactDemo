@@ -24,5 +24,6 @@ export default {
     ],
     others: [
         // { key: '/app/404', title: '404', icon: 'mobile', component: 'Notfound' },
+         { key: '/app/list/:id', title: '详情', component: 'Detail',query:"?id=123&key=qwq",permission:1 },
     ], // 非菜单相关路由
 };
