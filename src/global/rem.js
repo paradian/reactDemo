@@ -7,10 +7,10 @@ function rem_resize() {
     document.querySelector("html").style.fontSize = p + "px";
     console.log('resize')
 }
-rem_resize();
-window.addEventListener("onresize",() =>{
-    rem_resize();
-})
-window.onresize = function () {
-    rem_resize();
-}
+// rem_resize();
+// window.addEventListener("onresize",() =>{
+//     rem_resize();
+// })
+// window.onresize = function () {
+//     rem_resize();
+// }

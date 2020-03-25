@@ -30,8 +30,6 @@ class Home extends Component {
      }
      console.log(temp,'temppppp')
      length --;
-
-
     }
     console.log(temp,'temp')
     

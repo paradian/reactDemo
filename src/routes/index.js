@@ -65,7 +65,6 @@ import {bindActionCreators} from 'redux'
                                                 params[key] && params[key].replace(reg, '');
                                         });
                                         props.match.params = { ...params };
-                                        console.log(params,'params')
                                         const merge = {
                                             ...props,
                                             query: queryParams

@@ -11,6 +11,7 @@ const list = (state = [], action) => {
         }
       })
     default:
+      
       return []
   }
 }

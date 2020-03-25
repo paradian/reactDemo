@@ -2,6 +2,12 @@ export default {
     menus: [
         // 菜单相关路由
         { key: '/app/home', title: '首页', icon: 'mobile', component: 'Home',permission:0 },
+        { key: '/app/lottery', title: '抽奖', icon: 'mobile', component: 'Lottery',permission:0 },
+        { key: '/app/maintain', title: '修理', icon: 'mobile', component: 'Maintain',permission:0 },
+        { key: '/app/manager', title: '管理员', icon: 'mobile', component: 'Manager',permission:0 },
+        { key: '/app/tableList', title: '报表', icon: 'mobile', component: 'TableList',permission:0 },
+        { key: '/app/user', title: '用户', icon: 'mobile', component: 'UserList',permission:0 },
+        // { key: '/app/home', title: '首页', icon: 'mobile', component: 'Home',permission:0 },
         {
             key: '/app/demo',
             title: '测试',

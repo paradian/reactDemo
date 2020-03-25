@@ -5,10 +5,6 @@ class BasicTable extends Component{
         columns :[],
         data :[]
     }
-    commitData(data,) {
-        console.log( data)
-        this.props.checkItem(data)
-    }
     componentWillMount() {
         this.setState({
             columns :[
