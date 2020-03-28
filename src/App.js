@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import DocumentTitle from 'react-document-title'
-import { Layout, Divider, ConfigProvider,Button } from 'antd'
+import { Layout, Divider, ConfigProvider,Button,message } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
 // import Header from './components/Header'
 import { connectAlita } from 'redux-alita'
@@ -17,6 +17,22 @@ class App extends Component {
   //   super(props)
   //   this.changeStatus = this.changeStatus.bind(this)
   // }
+  
+  componentDidMount() {
+    console.log('enter app')
+    window.addEventListener('onbeforeunload',function(){
+      message.info("浏览器即将刷新")
+      alert('即将刷新浏览器')
+    })
+    // window.onbeforeunload = function(){
+    //   alert('???')
+    //   message.info("浏览器刷新")
+    //   console.log('????')
+    // }
+  }
+  componentDidUpdate() {
+    console.log('update')
+  }
   state = {
     title: '首页',
     collapsed: false

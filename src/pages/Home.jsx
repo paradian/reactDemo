@@ -1,20 +1,29 @@
 import React, { Component } from 'react'
-import { DatePicker, Layout, Button } from 'antd'
+import { DatePicker, Layout, Button, Modal} from 'antd'
 import BasicTable from '../components/Table'
-import SideMenu from '../components/sideMenu'
 import { connect } from 'react-redux'
 import API from '../fetch/api'
 import { bindActionCreator, bindActionCreators } from 'redux'
 import actions from '../store/actions'
+import {Prompt} from 'react-router'
+// import { Lifecycle } from 'react-router-dom'
 // import { increment, decrement, getlist } from '../store/actions/index'
 const { Sider, Footer, Header, Content } = Layout
 class Home extends Component {
+  // mixins=[Lifecycle]
   state = {
     date: new Date(),
     list: [1, 2, 3, 4, 5],
     array:[2,5,4,6,9],
+    modalVisible:false
+    
 
   }
+ 
+  // routerWillLeave(nextLocation) {
+  //   console.log(nextLocation,'next location')
+  //   return 'prevent'
+  // }
   componentWillMount() {
     console.log('component will mount', API)
     API.getList().then(res => {
@@ -28,10 +37,8 @@ class Home extends Component {
      if(index<0){
        temp.push(this.state.array[length])
      }
-     console.log(temp,'temppppp')
      length --;
     }
-    console.log(temp,'temp')
     
   }
   componentDidMount() {
@@ -104,14 +111,84 @@ class Home extends Component {
       height:300
     }
   }
+  showModalSave = location => {
+    this.setState({
+      modalVisible: true,
+      location,
+    });
+  };
+
+  closeModalSave = () => {
+    const { location } = this.state;
+    const { history } = this.props;
+    console.log(location.pathname,'pathName',history)
+    // if(history.action == 'POP') {
+    //   history.goBack()
+    // } else if(history.action == 'PUSH') {
+    //   history.push({
+    //     pathname: `..${location.pathname}`,
+    //   });
+    // }
+    history.push({
+      pathname: `..${location.pathname}`,
+    });
+    this.setState({
+      modalVisible: false,
+    });
+    console.log(location.pathname,'pathName',history)
+  };
+
+  handlePrompt = location => {
+    if (!this.isSave) {
+      this.showModalSave(location);
+      return false;
+    }
+    return true;
+  };
+
+  handleSave = () => {
+    const { location } = this.state;
+    const { history } = this.props;
+    this.isSave = true;
+    console.log(location.pathname, 'pathname75',history);
+    history.push({
+      pathname: `..${location.pathname}`,
+    });
+    this.setState({
+      modalVisible: false,
+    });
+    // this.saveAll();
+  };
   render() {
     console.log(this.props.count, 'props,props')
     console.log(this.props.list)
     const { dispatch } = this.props
     console.log(dispatch, 'dispatch')
+    // handlePrompt = location => {
+    //   if (!this.isSave) {
+    //     this.showModalSave(location);
+    //     return false;
+    //   }
+    //   return true;
+    // };
   
+   
     return (
       <div className="container">
+        <Prompt message={(location) => 
+    this.handlePrompt(location)
+  }></Prompt>
+  <Modal title="是否继续？"
+       visible={this.state.modalVisible}
+       onCancel={this.closeModalSave}
+       closable={false}
+       onOk={this.handleSave}
+       centered
+>
+{/* <div>是否保存修改？</div> */}
+<p>检测到当前页内容未保存</p>
+
+</Modal>
         hoem page
         <div>
           <Button onClick={() => this.props.increseCounter()}>+</Button>
