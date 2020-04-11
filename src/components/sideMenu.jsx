@@ -59,11 +59,9 @@ class SideMenu extends Component {
                 <Menu collapsed={this.props.collapsed.toString()} theme={'dark'} mode={!this.props.collapsed?'inline':'vertical'}>
                     {
                         MenuList.map(item =>(
-                           item.subs? renderSubMenu(item) : renderMenu(item))
-                        )
+                           item.subs? renderSubMenu(item) : renderMenu(item))    )
                     }
                 </Menu>
-
             </div>
         )
     }

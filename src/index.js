@@ -7,7 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux'
 import rootReducers from './store/reducers'
-console.log(typeof rootReducers,'root reducers')
+
 const store = createStore(rootReducers)
 ReactDOM.render(
     <Provider store={store}>

@@ -14,16 +14,13 @@
             display: flex;
             flex-wrap: wrap;
             flex-direction: row-reverse;
-
         }
-
         .btn {
             width: 30%;
             height: 48px;
             font-size: 24px;
             border: solid 1px #000;
             display: inline-block;
-
         }
     </style>
 
@@ -42,21 +39,39 @@
 
     <script>
         var btn = document.getElementById('btn5')
-        var ids = [1, 2, 3, 4, 6, 7, 8, 9]
-        var nums = [1, 2, 3, 4, 6, 7, 8, 9]
-        btn.addEventListener("click",() => {
-            console.log('enter??')
-            ids.unshift(ids.pop())
-            // ids.pop(ids.unshift())
-            renderDom()
-        }) 
+        var ids = [1, 2, 3, 6, 9, 8, 7, 4]
+        var nums = [0, 1, 2, 4, 7, 6,5,3]
+        //每次点击之后，1和2换，2和3换，3和6换，6和9换，9和8换，8和7换，7和4换，4和1换
         renderDom()
+        btn.addEventListener("click", () => {
+            // console.log('enter??')
+            // ids.unshift(ids.pop())
+            // ids.pop(ids.unshift())
+            ids.unshift(ids.pop())
+            // nums.unshift(nums.pop())
+            renderDom()
+        })
+            // var value = 22
+            // if(value<30 && value>20){
+            //     console.log('enter')
+            // }
         function renderDom() {
             var doms = document.getElementsByClassName('normal')
-            console.log(doms,Array.isArray(doms),'doms',doms.length)
-           for(let i=0;i< doms.length;i++){
-                doms[i].innerHTML = nums[i]
-           }
+            // console.log(doms, Array.isArray(doms), 'doms', doms.length)
+            
+            temp = doms[3].innerHTML
+            doms[3].innerHTML = doms[5].innerHTML
+            doms[5].innerHTML = doms[6].innerHTML
+            doms[6].innerHTML = doms[7].innerHTML
+            doms[7].innerHTML = doms[4].innerHTML
+            doms[4].innerHTML = doms[2].innerHTML
+            doms[2].innerHTML = doms[1].innerHTML
+            doms[1].innerHTML = doms[0].innerHTML
+            doms[0].innerHTML = temp
+              
+               for(let i=0;i< nums.length;i++){
+                    doms[nums[i]].innerHTML = ids[i]
+               }
         }
     </script>
 </body>

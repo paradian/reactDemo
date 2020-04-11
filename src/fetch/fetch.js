@@ -28,7 +28,13 @@ const  fetch =  (url ,method =method ||'GET',data=data||'') => {
                         'Access-Control-Allow-Origin':'*'
                     }
     }).then(res =>{
+
         resolve(res)
+        if(res.code == 401)  {
+
+        } else if(res.code == 500) {
+          
+        }
     })
 })
     // try {

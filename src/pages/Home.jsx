@@ -6,6 +6,7 @@ import API from '../fetch/api'
 import { bindActionCreator, bindActionCreators } from 'redux'
 import actions from '../store/actions'
 import {Prompt} from 'react-router'
+import {Chart } from '@antv/g2'
 // import { Lifecycle } from 'react-router-dom'
 // import { increment, decrement, getlist } from '../store/actions/index'
 const { Sider, Footer, Header, Content } = Layout
@@ -102,8 +103,25 @@ class Home extends Component {
 
     }
   }
+  drawChart(data) {
+    const chart = this.refs.gChart
+    const c = new Chart({
+      container:chart,
+      height:300,
+      width:300
+    })
+    c.data(data)
+    c.interval().position('genre*sold')
+    c.render()
+  }
   componentDidMount(){
     this.drawDemo()
+    let data =[ { genre: 'Sports', sold: 275 },
+    { genre: 'Strategy', sold: 115 },
+    { genre: 'Action', sold: 120 },
+    { genre: 'Shooter', sold: 350 },
+    { genre: 'Other', sold: 150 },]
+    this.drawChart(data)
   }
  canvasStyle = {
     demo:{
@@ -122,13 +140,7 @@ class Home extends Component {
     const { location } = this.state;
     const { history } = this.props;
     console.log(location.pathname,'pathName',history)
-    // if(history.action == 'POP') {
-    //   history.goBack()
-    // } else if(history.action == 'PUSH') {
-    //   history.push({
-    //     pathname: `..${location.pathname}`,
-    //   });
-    // }
+   
     history.push({
       pathname: `..${location.pathname}`,
     });
@@ -150,7 +162,6 @@ class Home extends Component {
     const { location } = this.state;
     const { history } = this.props;
     this.isSave = true;
-    console.log(location.pathname, 'pathname75',history);
     history.push({
       pathname: `..${location.pathname}`,
     });
@@ -189,7 +200,6 @@ class Home extends Component {
 <p>检测到当前页内容未保存</p>
 
 </Modal>
-        hoem page
         <div>
           <Button onClick={() => this.props.increseCounter()}>+</Button>
           {this.props.count.counter}
@@ -198,6 +208,7 @@ class Home extends Component {
         <Button onClick={() => this.props.getlist()}>getlist</Button>
         <canvas width='300' height='300' ref='canvasDemo'>
         </canvas>
+        <div ref="gChart"></div>
         <BasicTable checkItem={this.checkItem}></BasicTable>
       </div>
     )
